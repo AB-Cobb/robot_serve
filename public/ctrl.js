@@ -13,6 +13,7 @@ $(function(){
     })
 
     btn_fwd.click(function(){
+        pi_logs.append('<p> FWD</p>')
         socket.emit("cmd", {drive : "fwd"})
     })
     btn_fwd.mouseup(function(){
