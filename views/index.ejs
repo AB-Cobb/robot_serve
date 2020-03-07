@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <title>Robot CTRL</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        table{
+            margin: auto;
+        }
+        #FWD {
+            background-color: lime;
+        }
+        #BCK {
+            background-color: crimson;
+        }
+        #LFT {
+            background-color: yellow;
+        }
+        #RGHT {
+            background-color: cyan;
+        }
+        #logs{
+            text-align: left;
+            margin: auto;
+            width: 70%;
+            color: lightgrey;
+            background-color: navy
+        }
+    </style>
+  </head>
+  <body>
+    <h1> Robot CTRL</h1>
+
+    <table>
+        <tr>
+            <td></td>
+            <td>
+                <button id="fwd">FWD</button>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <button id="LFT"><==</button>
+            </td>
+            <td></td>
+            <td>
+                <button id="RGHT">==></button>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button id="BCK">BCK</button>
+            </td>
+            <td></td>
+        </tr>
+    </table>
+
+    <div id="logs">
+        <h3> PI logs</h3>
+        <!-- PI LOGS go here-->
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="ctrl.js"></script>
+    </body>
