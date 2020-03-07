@@ -1,5 +1,5 @@
 $(function(){
-    const socket = io.connect('http://localhost')
+    const socket = io.connect()
     
     // Input / output
     var pi_logs = $("#logs")
