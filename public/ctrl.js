@@ -13,7 +13,7 @@ $(function(){
         pi_logs.append("<p>" +data.txt+"</p>")
     })
 
-    btn_fwd.click(function(){
+    btn_fwd.mousedown(function(){
         socket.emit("cmd", {drive : "fwd"})
     })
     btn_fwd.mouseup(function(){
