@@ -35,7 +35,7 @@ $(function(){
     })
 
     btn_bck.mousedown(function(){
-        socket.emit("cmd", {drive : "fwdbck"})
+        socket.emit("cmd", {drive : "bck"})
     })
     btn_bck.mouseup(function(){
         socket.emit("cmd", {drive : "stop"})
