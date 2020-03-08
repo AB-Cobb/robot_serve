@@ -1,5 +1,6 @@
 $(function(){
-    const socket = io.connect('localhost:3000')
+    console.log("hello world")
+    const socket = io.connect(/*'localhost:3000'*/)
     
     // Input / output
     var pi_logs = $("#logs")
@@ -12,8 +13,7 @@ $(function(){
         pi_logs.append("<p>" +data.txt+"</p>")
     })
 
-    btn_fwd.click(function(){
-        pi_logs.append('<p> FWD</p>')
+    btn_fwd.mousedown(function(){
         socket.emit("cmd", {drive : "fwd"})
     })
     btn_fwd.mouseup(function(){
