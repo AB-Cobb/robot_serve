@@ -1,6 +1,6 @@
 $(function(){
     console.log("hello world")
-    const socket = io.connect('localhost:3000')
+    const socket = io.connect(/*'localhost:3000'*/)
     
     // Input / output
     var pi_logs = $("#logs")
