@@ -22,4 +22,8 @@ io.on('connection', socket => {
         console.log('PI Log ' + data.txt)
         io.sockets.emit('PI_log', {txt : data.txt})
     })
+    socket.on("ctrl_log", data => {
+        console.log('CTRL Log ' + data.txt)
+        io.sockets.emit('ctrl_log', {txt : data.txt})
+    })
 })
