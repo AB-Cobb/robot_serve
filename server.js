@@ -18,12 +18,12 @@ io.on('connection', socket => {
         io.sockets.emit('cmd', {drive: data.drive})
         //io.sockets.emit('ctrl_log', {txt :"command "+ data.drive})
     })
-    socket.on("PI_log", data => {
-        console.log('PI Log ' + data.txt)
-        io.sockets.emit('PI_log', {txt : data.txt})
-    })
     socket.on("ctrl_log", data => {
         console.log('CTRL Log ' + data.txt)
         io.sockets.emit('ctrl_log', {txt : data.txt})
+    })
+    socket.on("PI_log", data => {
+        console.log('PI Log ' + data.txt)
+        io.sockets.emit('PI_log', {txt : data.txt})
     })
 })
