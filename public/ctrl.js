@@ -12,8 +12,8 @@ $(function(){
     socket.on ("PI_log", data => {
         logs.append("<p>PI: " +data.txt+"</p>")
     })
-    socket.on ("cmd_log", data => {
-        logs.append("<p>CMD:" +data.txt+"</p>")
+    socket.on ("ctrl_log", data => {
+        logs.append("<p>CTRL:" +data.txt+"</p>")
     })
 
     btn_fwd.mousedown(function(){
