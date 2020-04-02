@@ -1,0 +1,1 @@
+module.exports = { db : "mongodb+srv://dbuser:aA*Rz=BVCh$g8!ix@cluster0-afltg.azure.mongodb.net/test?retryWrites=true&w=majority"};
