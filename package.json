@@ -2,7 +2,7 @@
   "name": "heroku_robot_serve",
   "version": "1.0.0",
   "description": "robot serve",
-  "main": "index.js",
+  "main": "index.ejs",
   "scripts": {
     "start": "node server.js",
     "postinstall": "./node_modules/.bin/tsd reinstall",
