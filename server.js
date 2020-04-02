@@ -2,6 +2,7 @@ const express = require ('express')
 const app = express()
 server = app.listen(process.env.PORT || 3000)
 const io =  require("socket.io")(server)
+const ss = require('socket.io-stream');
 const mongoose = require('mongoose')
 
 const db = require ('./db/db')
@@ -38,14 +39,27 @@ app.get ('/', (req, res) => {
 })
 
 
+
+
 io.on('connection', socket => {
     console.log('conection')
+    
+    //Pi Commands
     socket.on('cmd', data => {
         console.log("CMD " + data.drive)
-        Log.create()
         io.sockets.emit('cmd', {drive: data.drive})
         io.sockets.emit('ctrl_log', {txt :"command "+ data.drive})
     })
+
+    //WebCam Stream
+    ss(socket).on('PI_cam', stream => {
+        console.log('web cam stream running')
+        let outstream = ss.createStream()
+        ss(sockets).emit('PI_cam', outstream)
+        stream.pipe(outstream)
+    })
+
+    //Logging
     socket.on("ctrl_log", data => {
         console.log('CTRL Log: ' + data.txt)
         io.sockets.emit('ctrl_log', {txt : data.txt})
@@ -69,8 +83,9 @@ io.on('connection', socket => {
             console.log("adding log ", data)
         })
     })
+    /*
     socket.on("PI_cam", data => {
         io.sockets.emit('PI_log', data)
         console.log("received pi cam data ")
-    })
+    })*/
 })
