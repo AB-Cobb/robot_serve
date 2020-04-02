@@ -2,6 +2,7 @@ const express = require ('express')
 const app = express()
 server = app.listen(process.env.PORT || 3000)
 const io =  require("socket.io")(server)
+const mongoose = require('mongoose')
 
 const db = require ('./db/db')
 const Log = require ('./models/Log')
