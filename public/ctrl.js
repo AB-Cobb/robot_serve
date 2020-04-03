@@ -10,11 +10,6 @@ $(function(){
     var btn_rght = $("#RGHT")
     var pi_cam = $("#picam")
 
-    ss(socket).on('PI_cam', stream => {
-        videoStreamUrl = window.URL.createObjectURL(stream);
-        pi_cam.src = videoStreamUrl;
-    })
-
     socket.on ("PI_log", data => {
         logs.append("<p>PI: " +data.txt+"</p>")
     })

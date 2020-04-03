@@ -34,6 +34,11 @@ app.get ('/api/logs', (req,res) => {
     })
 })
 
+const outstream = ss.createStream()
+app.get('/api/pi_cam', (req, res) => {
+    outstream.pipe(res)
+})
+
 app.get ('/', (req, res) => {
     res.render('index')
 })
@@ -54,8 +59,8 @@ io.on('connection', socket => {
     //WebCam Stream
     ss(socket).on('PI_cam', stream => {
         console.log('web cam stream running')
-        let outstream = ss.createStream()
-        ss(io.sockets).emit('PI_cam', outstream)
+        //let outstream = ss.createStream()
+        ss(socket).emit('PI_cam', outstream)
         stream.pipe(outstream)
     })
 
@@ -83,4 +88,9 @@ io.on('connection', socket => {
             console.log("adding log ", data)
         })
     })
+    /*
+    socket.on("PI_cam", data => {
+        io.sockets.emit('PI_log', data)
+        console.log("received pi cam data ")
+    })*/
 })
