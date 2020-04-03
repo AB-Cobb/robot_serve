@@ -10,6 +10,10 @@ $(function(){
     var btn_rght = $("#RGHT")
     var pi_cam = $("#picam")
 
+    socket.on('cam_image', data => {
+        pi_cam.src = data;
+        console.log('pi cam data', data);
+    })
     socket.on ("PI_log", data => {
         logs.append("<p>PI: " +data.txt+"</p>")
     })
