@@ -55,7 +55,7 @@ io.on('connection', socket => {
     ss(socket).on('PI_cam', stream => {
         console.log('web cam stream running')
         let outstream = ss.createStream()
-        ss(sockets).emit('PI_cam', outstream)
+        ss(io.sockets).emit('PI_cam', outstream)
         stream.pipe(outstream)
     })
 
