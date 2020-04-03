@@ -22,12 +22,12 @@ mongoose.connect(db.db, {
 app.set ('view engine', 'ejs')
 
 app.use (express.static('public'))
-
+/*
 let outstream = ss.createStream()
 app.get('/api/video', (req,res) => {
     res.header(206, {'Content-Type':'video/mp4'})
     outstream.pipe(res)
-})
+})//*/
 
 app.get ('/api/logs', (req,res) => {
     Log.find().exec((error, data) => {
@@ -56,15 +56,13 @@ io.on('connection', socket => {
         io.sockets.emit('cmd', {drive: data.drive})
         io.sockets.emit('ctrl_log', {txt :"command "+ data.drive})
     })
-
+    
     //WebCam Stream
-    ss(socket).on('PI_cam', stream => {
+    socket.on('PI_cam', frame => {
         console.log('web cam stream running')
-        //ss(socket).emit('PI_cam', outstream)
-        stream.pipe(outstream)
-        //*/
+        io.socekts.emit('PI_cam', frame)
     })
-
+    //*/
     //Logging
     socket.on("ctrl_log", data => {
         console.log('CTRL Log: ' + data.txt)
