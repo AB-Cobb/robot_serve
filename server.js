@@ -83,9 +83,4 @@ io.on('connection', socket => {
             console.log("adding log ", data)
         })
     })
-    /*
-    socket.on("PI_cam", data => {
-        io.sockets.emit('PI_log', data)
-        console.log("received pi cam data ")
-    })*/
 })
