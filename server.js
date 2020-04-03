@@ -23,6 +23,10 @@ app.set ('view engine', 'ejs')
 
 app.use (express.static('public'))
 
+app.get('apt/test', (req,res) => {
+    res.json({ Hello : 'Hello World!'})
+})
+
 app.get ('/api/logs', (req,res) => {
     Log.find().exec((error, data) => {
         if (error){
