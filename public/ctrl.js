@@ -1,13 +1,19 @@
 $(function(){
     console.log("hello world")
     const socket = io.connect(/*'localhost:3000'*/)
-    
+    const stream = ss.createStream();
     // Input / output
     var logs = $("#logs")
     var btn_fwd = $("#FWD")
     var btn_lft = $("#LFT")
     var btn_bck = $("#BCK")
     var btn_rght = $("#RGHT")
+    var pi_cam = $("#picam")
+
+    ss(socket).on('PI_cam', stream => {
+        videoStreamUrl = window.URL.createObjectURL(stream);
+        pi_cam.src = videoStreamUrl;
+    })
 
     socket.on ("PI_log", data => {
         logs.append("<p>PI: " +data.txt+"</p>")
