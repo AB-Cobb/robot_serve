@@ -25,7 +25,7 @@ app.use (express.static('public'))
 
 let outstream = ss.createStream()
 app.get('/api/video', (req,res) => {
-    res.header(206, {'Content-Type':'video/H264'})
+    res.header(206, {'Content-Type':'video/mp4'})
     outstream.pipe(res)
 })
 
