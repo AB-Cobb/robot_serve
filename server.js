@@ -23,8 +23,10 @@ app.set ('view engine', 'ejs')
 
 app.use (express.static('public'))
 
-app.get('/api/test', (req,res) => {
-    res.json({ Hello : 'Hello World!'})
+let outstream = ss.createStream()
+app.get('/api/video', (req,res) => {
+    res.header(206, {'Content-Type':'video/h264'})
+    outstream.pipe(res)
 })
 
 app.get ('/api/logs', (req,res) => {
@@ -58,12 +60,7 @@ io.on('connection', socket => {
     //WebCam Stream
     ss(socket).on('PI_cam', stream => {
         console.log('web cam stream running')
-        stream.on("data", data => {
-            io.sockets.emit('cam_image', data)
-        })
-        /*
-        //let outstream = ss.createStream()
-        ss(socket).emit('PI_cam', outstream)
+        //ss(socket).emit('PI_cam', outstream)
         stream.pipe(outstream)
         //*/
     })
