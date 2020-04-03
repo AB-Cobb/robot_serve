@@ -1,7 +1,6 @@
 $(function(){
     console.log("hello world")
     const socket = io.connect(/*'localhost:3000'*/)
-    const stream = ss.createStream();
     // Input / output
     var logs = $("#logs")
     var btn_fwd = $("#FWD")
