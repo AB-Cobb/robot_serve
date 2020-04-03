@@ -23,7 +23,7 @@ app.set ('view engine', 'ejs')
 
 app.use (express.static('public'))
 
-app.get('apt/test', (req,res) => {
+app.get('/api/test', (req,res) => {
     res.json({ Hello : 'Hello World!'})
 })
 
