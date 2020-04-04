@@ -60,7 +60,7 @@ io.on('connection', socket => {
     //WebCam Stream
     socket.on('PI_cam', frame => {
         console.log('web cam stream running')
-        io.socekts.emit('PI_cam', frame)
+        io.sockets.emit('PI_cam', frame)
     })
     //*/
     //Logging
