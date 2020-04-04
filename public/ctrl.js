@@ -9,7 +9,7 @@ $(function(){
     var btn_rght = $("#RGHT")
     var pi_cam = $("#picam")
     socket.on('PI_cam', data => {
-        picam.src = 'data:image/MJPEG,${data}';
+        pi_cam.src = 'data:image/MJPEG,${data}';
         console.log('pi cam data', data);
     })
     socket.on ("PI_log", data => {
