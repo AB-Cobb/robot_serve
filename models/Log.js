@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Log = new Schema({
-    sender : { type : String},
+    source : { type : String},
+    username : { type : String },
     data : {type : String}
 })
 Log.set('timestamps', true)
