@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 
 const db = require ('./db/db')
 const Log = require ('./models/Log')
-
+//testing
 mongoose.connect(db.db, {
     useNewUrlParser: true
   }).then(() => {
