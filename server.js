@@ -2,7 +2,6 @@ const express = require ('express')
 const app = express()
 server = app.listen(process.env.PORT || 3000)
 const io =  require("socket.io")(server)
-const ss = require('socket.io-stream');
 const mongoose = require('mongoose')
 
 const db = require ('./db/db')
@@ -22,12 +21,6 @@ mongoose.connect(db.db, {
 app.set ('view engine', 'ejs')
 
 app.use (express.static('public'))
-/*
-let outstream = ss.createStream()
-app.get('/api/video', (req,res) => {
-    res.header(206, {'Content-Type':'video/mp4'})
-    outstream.pipe(res)
-})//*/
 
 app.get ('/api/logs', (req,res) => {
     Log.find().exec((error, data) => {

@@ -36,7 +36,7 @@
   </head>
   <body>
     <h1> Robot CTRL</h1>
-    <img  id='picam' width="680px"  height="320px";  style="border: 1px solid black;">
+    <canvas id="video-canvas"></canvas>
     <table>
         <tr>
             <td></td>
@@ -68,5 +68,14 @@
         <!-- PI LOGS go here-->
     </div>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    
+    <!-- js mpeg encoder from phodoslabs used under MIT License - Copyright (c) 2017 Dominic Szablewski-->
+    <script src="jsmpeg.min.js"></script>
+    <script type="text/javascript">
+		var canvas = document.getElementById('video-canvas');
+		var url = 'ws://https://picamserver.herokuapp.com';
+		var player = new JSMpeg.Player(url, {canvas: canvas});
+	</script>
     <script src="ctrl.js"></script>
     </body>
+</html> 
