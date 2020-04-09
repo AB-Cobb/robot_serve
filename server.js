@@ -38,14 +38,16 @@ io.on('connection', socket => {
         console.log("CMD " + data.drive)
         io.sockets.emit('cmd', {drive: data.drive})
         io.sockets.emit('ctrl_log', {txt :"command "+ data.drive})
+        //Logging
+        Log.create({source : data.source, username : data.username, data : "COMMAND = "+data.drive}, (error, data) => {
+            if (error) {
+                console.log(error);
+                return
+            }
+            console.log("adding log ", data)
+        })
     })
-    
-    //WebCam Stream
-    socket.on('PI_cam', frame => {
-        console.log('web cam stream running')
-        io.sockets.emit('PI_cam', frame)
-    })
-    //*/
+    /*
     //Logging
     socket.on("ctrl_log", data => {
         console.log('CTRL Log: ' + data.txt)
@@ -58,7 +60,7 @@ io.on('connection', socket => {
             console.log("adding log ", data)
         })
 
-    })
+    })*/
     socket.on("PI_log", data => {
         console.log('PI Log: ' + data.txt)
         io.sockets.emit('PI_log', {txt : data.txt})
