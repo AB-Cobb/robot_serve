@@ -8,6 +8,9 @@ const router = require('./router')
 const db = require ('./db/db')
 const Log = require ('./models/Log')
 
+const User = require ('./models/User')
+const Log = require('./models/Log')
+
 //testing
 mongoose.connect(db.db, {
     useNewUrlParser: true
