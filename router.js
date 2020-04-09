@@ -15,12 +15,11 @@ router.get('/logs',(req,res) => {
 })
 router.post('/adduser', (req,res) => {
     let user = new User({
-        username : req.params.username,
-        fname : req.params.fname,
-        lname : req.params.lname,
-        password : req.params.password,
+        username : req.query.username,
+        fname : req.query.fname,
+        lname : req.query.lname,
+        password : req.query.password,
     })
-    console.log("req : ", req)
     User.create(user, (error, data) => {
         if (error) {
             console.log(error);
@@ -32,8 +31,8 @@ router.post('/adduser', (req,res) => {
     })
 });//*/
 router.post('/deluser', (req,res) => {
-    let username = req.body.username;
-    let id = req.body.id; 
+    let username = req.query.username;
+    let id = req.query.id; 
     if (username == 'root'){
         return res.status(403).json({ error : 'can not delete root user'});
     }
@@ -47,7 +46,7 @@ router.post('/deluser', (req,res) => {
     })
 })
 router.post('/updateuser', (req,res) => {
-    let user = req.body;
+    let user = req.query;
     User.findByIdAndUpdate(user.id, user, (error, data) =>{
         if (error) {
             console.log(error);
