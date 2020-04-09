@@ -3,10 +3,10 @@ const app = express()
 server = app.listen(process.env.PORT || 3000)
 const io =  require("socket.io")(server)
 const mongoose = require('mongoose')
-
+const router = require('./router')
 const db = require ('./db/db')
 const Log = require ('./models/Log')
-//testing
+
 mongoose.connect(db.db, {
     useNewUrlParser: true
   }).then(() => {
@@ -22,23 +22,7 @@ app.set ('view engine', 'ejs')
 
 app.use (express.static('public'))
 
-app.get ('/api/logs', (req,res) => {
-    Log.find().exec((error, data) => {
-        if (error){
-            console.log (error);
-            res.json({ ERROR : error})
-        } else {
-            res.json(data);
-         }
-    })
-})
-
-app.get ('/', (req, res) => {
-    res.render('index')
-})
-
-
-
+app.use('/api', router )
 
 io.on('connection', socket => {
     console.log('conection')
