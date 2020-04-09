@@ -57,7 +57,7 @@ router.post('/updateuser', (req,res) => {
     }) 
 })
 router.get('/allusers', (req,res) => {
-    User.find().populate('username','fname','lname').exec((error, data) => {
+    User.find().exec((error, data) => {
         if (error){
             console.log (error);
             res.status(500).json({ ERROR : error})
