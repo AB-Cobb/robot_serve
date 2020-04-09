@@ -15,12 +15,12 @@ router.get('/logs',(req,res) => {
 })
 router.post('/adduser', (req,res) => {
     let user = new User({
-        username : req.body.username,
-        fname : req.body.fname,
-        lname : req.body.lname,
-        password : req.body.password,
+        username : req.params.username,
+        fname : req.params.fname,
+        lname : req.params.lname,
+        password : req.params.password,
     })
-    console.log("adding user : ", user)
+    console.log("req : ", req)
     User.create(user, (error, data) => {
         if (error) {
             console.log(error);
