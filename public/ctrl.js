@@ -23,23 +23,23 @@ $(function(){
     })
 
     btn_lft.mousedown(function(){
-        socket.emit("cmd", {drive : "lft"})
+        socket.emit("cmd", {source : 'testing website', username : 'none', drive : "lft"})
     })
     btn_lft.mouseup(function(){
-        socket.emit("cmd", {drive : "stop"})
+        socket.emit("cmd", {source : 'testing website', username : 'none',drive : "stop"})
     })
 
     btn_rght.mousedown(function(){
-        socket.emit("cmd", {drive : "rght"})
+        socket.emit("cmd", {source : 'testing website', username : 'none',drive : "rght"})
     })
     btn_rght.mouseup(function(){
-        socket.emit("cmd", {drive : "stop"})
+        socket.emit("cmd", {source : 'testing website', username : 'none',drive : "stop"})
     })
 
     btn_bck.mousedown(function(){
-        socket.emit("cmd", {drive : "bck"})
+        socket.emit("cmd", {source : 'testing website', username : 'none',drive : "bck"})
     })
     btn_bck.mouseup(function(){
-        socket.emit("cmd", {drive : "stop"})
+        socket.emit("cmd", {source : 'testing website', username : 'none',drive : "stop"})
     })
 })

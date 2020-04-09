@@ -60,7 +60,7 @@ io.on('connection', socket => {
     socket.on("ctrl_log", data => {
         console.log('CTRL Log: ' + data.txt)
         io.sockets.emit('ctrl_log', {txt : data.txt})
-        Log.create({sender : 'CTRL', data : data.text}, (error, data) => {
+        Log.create({source : data.source, username : data.username ,data : data.text}, (error, data) => {
             if (error) {
                 console.log(error);
                 return
@@ -72,7 +72,7 @@ io.on('connection', socket => {
     socket.on("PI_log", data => {
         console.log('PI Log: ' + data.txt)
         io.sockets.emit('PI_log', {txt : data.txt})
-        Log.create({sender : 'PI', data : data.text}, (error, data) => {
+        Log.create({source : 'PI', user : 'pi_driver' , data : data.text}, (error, data) => {
             if (error) {
                 console.log(error);
                 return
