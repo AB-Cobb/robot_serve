@@ -20,6 +20,7 @@ router.post('/adduser', (req,res) => {
         lname : req.params.lname,
         password : req.params.password,
     })
+    console.log("adding user : ", user)
     User.create(user, (error, data) => {
         if (error) {
             console.log(error);
