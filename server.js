@@ -1,11 +1,12 @@
-const express = require ('express')
-const app = express()
-server = app.listen(process.env.PORT || 3000)
-const io =  require("socket.io")(server)
 const mongoose = require('mongoose')
 
 let Log = require ('./models/Log')
 let User = require ('./models/User')
+
+const express = require ('express')
+const app = express()
+server = app.listen(process.env.PORT || 3000)
+const io =  require("socket.io")(server)
 
 const router = require('./router')
 const db = require ('./db/db')
