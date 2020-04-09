@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require ('./models/User')
 
-router.get('logs',(req,res) => {
+router.get('/logs',(req,res) => {
     Log.find().exec((error, data) => {
         if (error){
             console.log (error);

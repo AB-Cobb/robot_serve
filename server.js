@@ -1,12 +1,14 @@
 const express = require ('express')
 const app = express()
+const router = express.Router();
 server = app.listen(process.env.PORT || 3000)
 const io =  require("socket.io")(server)
 const mongoose = require('mongoose')
-const router = require('./router')
+
 const db = require ('./db/db')
 const Log = require ('./models/Log')
-
+const User = require ('./models/User')
+//testing
 mongoose.connect(db.db, {
     useNewUrlParser: true
   }).then(() => {
@@ -23,6 +25,10 @@ app.set ('view engine', 'ejs')
 app.use (express.static('public'))
 
 app.use('/api', router )
+
+app.get ('/', (req, res) => {
+    res.render('index')
+})
 
 io.on('connection', socket => {
     console.log('conection')
