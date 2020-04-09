@@ -20,7 +20,7 @@ router.post('/adduser', (req,res) => {
         lname : req.params.lname,
         password : req.params.password,
     })
-    User.create(user, (error, data) => {
+    user.save((error, data) => {
         if (error) {
             console.log(error);
             return res.status(500).send();
@@ -29,6 +29,17 @@ router.post('/adduser', (req,res) => {
             res.status(201).json(data)
         }
     })
+});
+    /*
+    User.create(user, (error, data) => {
+        if (error) {
+            console.log(error);
+            return res.status(500).send();
+        } else {
+            console.log("adding user : ", data)
+            res.status(201).json(data)
+        }
+    })*/
 })
 router.post('/deluser', (req,res) => {
     let username = req.body.username;
