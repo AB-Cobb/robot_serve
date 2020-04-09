@@ -39,7 +39,8 @@ router.post('/adduser', (req,res) => {
             console.log("adding user : ", data)
             res.status(201).json(data)
         }
-    })*/
+    })
+});//*/
 router.post('/deluser', (req,res) => {
     let username = req.body.username;
     let id = req.body.id; 

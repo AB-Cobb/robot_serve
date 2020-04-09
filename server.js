@@ -4,11 +4,11 @@ server = app.listen(process.env.PORT || 3000)
 const io =  require("socket.io")(server)
 const mongoose = require('mongoose')
 
-const router = require('./router')
-const db = require ('./db/db')
 const Log = require ('./models/Log')
 const User = require ('./models/User')
 
+const router = require('./router')
+const db = require ('./db/db')
 
 //testing
 mongoose.connect(db.db, {
