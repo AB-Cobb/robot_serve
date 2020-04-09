@@ -1,13 +1,13 @@
 const express = require ('express')
 const app = express()
-const router = express.Router();
 server = app.listen(process.env.PORT || 3000)
 const io =  require("socket.io")(server)
 const mongoose = require('mongoose')
 
+const router = require('./router')
 const db = require ('./db/db')
 const Log = require ('./models/Log')
-const User = require ('./models/User')
+
 //testing
 mongoose.connect(db.db, {
     useNewUrlParser: true
@@ -24,7 +24,7 @@ app.set ('view engine', 'ejs')
 
 app.use (express.static('public'))
 
-app.use('/api', router )
+app.use('/api', router)
 
 app.get ('/', (req, res) => {
     res.render('index')
@@ -70,9 +70,4 @@ io.on('connection', socket => {
             console.log("adding log ", data)
         })
     })
-    /*
-    socket.on("PI_cam", data => {
-        io.sockets.emit('PI_log', data)
-        console.log("received pi cam data ")
-    })*/
 })

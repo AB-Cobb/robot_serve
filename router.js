@@ -1,14 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const User = require ('./models/User')
+const Log = require('./models/Log')
 
 router.get('/logs',(req,res) => {
     Log.find().exec((error, data) => {
         if (error){
             console.log (error);
-            res.json({ ERROR : error})
+            res.status(500).json({ ERROR : error})
         } else {
-            res.json(data);
+            res.status(200).json(data);
          }
     })
 })
@@ -49,7 +50,14 @@ router.post('/updateuser', (req,res) => {
     }) 
 })
 router.get('/allusers', (req,res) => {
-    User.find().populate('username','fname','lname')
+    User.find().populate('username','fname','lname').exec((error, data) => {
+        if (error){
+            console.log (error);
+            res.status(500).json({ ERROR : error})
+        } else {
+            res.status(200).json(data);
+         }
+    })
 })
 router.post('/login' ,(req,res) => {
     let username = req.body.username;
