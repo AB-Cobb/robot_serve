@@ -19,7 +19,7 @@ router.post('/adduser', (req,res) => {
             console.log(error);
             return res.status(500).send();
         } else {
-            console.log("adding user data : ", DataTransferItem)
+            console.log("adding user : ", data)
             res.status(201).json(data)
         }
     })
