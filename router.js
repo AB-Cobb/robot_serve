@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const User = require ('./models/User')
-const Log = require('./models/Log')
+let User = require ('./models/User')
+let Log = require('./models/Log')
 
 router.get('/logs',(req,res) => {
     Log.find().exec((error, data) => {
@@ -20,17 +20,6 @@ router.post('/adduser', (req,res) => {
         lname : req.params.lname,
         password : req.params.password,
     })
-    user.save((error, data) => {
-        if (error) {
-            console.log(error);
-            return res.status(500).send();
-        } else {
-            console.log("adding user : ", data)
-            res.status(201).json(data)
-        }
-    })
-});
-    /*
     User.create(user, (error, data) => {
         if (error) {
             console.log(error);

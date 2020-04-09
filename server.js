@@ -4,8 +4,8 @@ server = app.listen(process.env.PORT || 3000)
 const io =  require("socket.io")(server)
 const mongoose = require('mongoose')
 
-const Log = require ('./models/Log')
-const User = require ('./models/User')
+let Log = require ('./models/Log')
+let User = require ('./models/User')
 
 const router = require('./router')
 const db = require ('./db/db')
