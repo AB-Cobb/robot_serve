@@ -69,7 +69,7 @@ io.on('connection', socket => {
     socket.on("PI_log", data => {
         console.log('PI Log: ' + data.txt)
         io.sockets.emit('PI_log', {txt : data.txt})
-        Log.create({source : 'PI', user : 'pi_driver' , data : data.text}, (error, data) => {
+        Log.create({source : 'PI', username : 'pi_driver' , data : data.text}, (error, data) => {
             if (error) {
                 console.log(error);
                 return
