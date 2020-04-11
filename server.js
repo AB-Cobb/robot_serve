@@ -5,6 +5,7 @@ let User = require ('./models/User')
 
 const express = require ('express')
 const app = express()
+const cors = require('cors')
 app.use(cors());
 server = app.listen(process.env.PORT || 3000)
 const io =  require("socket.io")(server)
