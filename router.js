@@ -77,7 +77,7 @@ router.post('/login' ,(req,res) => {
         if (user){
             res.status(200).json({login : true})
         } else {
-            res.status(404).json({login : false})
+            res.status(200).json({login : false})
         }
     })
 })
