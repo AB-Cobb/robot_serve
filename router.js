@@ -32,7 +32,7 @@ router.post('/adduser', (req,res) => {
 });//*/
 router.post('/deluser', (req,res) => {
     let username = req.query.username;
-    let id = req.query.id; 
+    let id = req.query.id;
     if (username == 'root'){
         return res.status(403).json({ error : 'can not delete root user'});
     }
@@ -56,7 +56,7 @@ router.post('/updateuser', (req,res) => {
         }
     }) 
 })
-router.get('/allusers', (req,res) => {
+router.get('/users', (req,res) => {
     User.find().exec((error, data) => {
         if (error){
             console.log (error);
