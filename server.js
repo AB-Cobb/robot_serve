@@ -5,13 +5,14 @@ let User = require ('./models/User')
 
 const express = require ('express')
 const app = express()
+app.use(cors());
 server = app.listen(process.env.PORT || 3000)
 const io =  require("socket.io")(server)
 
 const router = require('./router')
 const db = require ('./db/db')
 
-//testing
+
 mongoose.connect(db.db, {
     useNewUrlParser: true
   }).then(() => {
