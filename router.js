@@ -67,8 +67,8 @@ router.get('/allusers', (req,res) => {
     })
 })
 router.post('/login' ,(req,res) => {
-    let username = req.body.username;
-    let pw = req.body.password; 
+    let username = req.query.username;
+    let pw = req.query.password; 
     User.findOne({username : username, password : pw}, (error, user) => {
         if (error){
             console.log(error)
